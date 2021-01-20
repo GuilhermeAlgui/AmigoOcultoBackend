@@ -1,30 +1,33 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from 'typeorm';
-import Group from './Group'
+import {
+	Entity,
+	Column,
+	PrimaryGeneratedColumn,
+	ManyToOne,
+	JoinColumn,
+} from 'typeorm';
+import Group from './Group';
 
 @Entity('users')
-export default class User{
-    
-    @PrimaryGeneratedColumn('increment')
-    id: number;
+export default class User {
+	@PrimaryGeneratedColumn('increment')
+	id: number;
 
-    @Column()
-    name: string;
+	@Column()
+	name: string;
 
-    @Column()
-    wish: string;
+	@Column()
+	wish: string;
 
-    @Column("int",{nullable: true})
-    group_id: number;
+	@Column('int', { nullable: true })
+	group_id: number;
 
-    @Column()
-    friend: number;
+	@Column()
+	friend: number;
 
-    @Column()
-    leader: boolean;
+	@Column()
+	leader: boolean;
 
-    @ManyToOne(()=>Group,group => group.users)
-    @JoinColumn({name: 'group_id'})
-    group: Group;
-
-
+	@ManyToOne(() => Group, (group) => group.users)
+	@JoinColumn({ name: 'group_id' })
+	group: Group;
 }
